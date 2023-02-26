@@ -26,6 +26,10 @@ public class RegistrationForm extends JDialog {
         setModal(true);
         setLocationRelativeTo(parent);
 //        setVisible(true); this is moved to underneath the dispose method
+
+        //necessary to restart application when clicking on the close button:
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
