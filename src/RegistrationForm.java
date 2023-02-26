@@ -44,6 +44,55 @@ public class RegistrationForm extends JDialog {
     }
 
     private void registerUser() {
+        //implementing the method by registering the fields:
+        String name = tfName.getText();
+        String email = tfEmail.getText();
+        String phone = tfPhone.getText();
+        String address = tfAddress.getText();
+        String password = String.valueOf(pfPassword.getPassword());
+        String confirmPassword = String.valueOf(pfConfirmPassword.getPassword());
+
+        //if fields are empty, there is an error message:
+        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Please enter all fields",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //if password & confirmPassword are equal:
+        if (!password.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(this,
+                    "Passwords do not match",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        //Creating a new user with a new method below:
+        user = addUserToDatabase(name, email, phone, address, password);
+
+        //If the user is an existing user, we close the registration form.
+        //If the user is null, then we display an error message.
+        if (user != null) {
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Failed to register new user",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    public User user; //global variable and is public. is initialized from line 74.
+
+    //implementing addUserToDatabase from above.
+    //this method will return the user object, if method does succeed in creating a new method
+    private User addUserToDatabase(String name, String email, String phone, String address, String password) {
+        User user = null; //fail = return null
+        return user; //success = valid user
     }
 
     public static void main(String[] args) {
