@@ -21,7 +21,7 @@ public class RegistrationForm extends JDialog {
         setMinimumSize(new Dimension(450, 474));
         setModal(true);
         setLocationRelativeTo(parent);
-        setVisible(true);
+//        setVisible(true); this is moved to underneath the dispose method
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,6 +32,15 @@ public class RegistrationForm extends JDialog {
                 //^ can be created by on the left, crete method, and click the bottom option, then it is created underneath
             }
         });
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //method will be executed when click the cancel button, we want to close the app
+                dispose();
+            }
+        });
+
+        setVisible(true);
     }
 
     private void registerUser() {
