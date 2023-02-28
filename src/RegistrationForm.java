@@ -94,7 +94,7 @@ public class RegistrationForm extends JDialog {
 
     }
 
-    public User user; //global variable and is public. is initialized from line 74.
+    public User user; //global variable and is public. is initialized from line 82.
 
     //implementing addUserToDatabase from above.
     //this method will return the user object, if method does succeed in creating a new method
@@ -109,8 +109,8 @@ public class RegistrationForm extends JDialog {
         //connect to database:
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-                //Connected to database successfully..
-                //create an sql statement to add a new user:
+                //Connected to database successfully.
+                //create a sql statement to add a new user:
             Statement stmt = conn.createStatement();
             String sql = "INSERT INTO users (name, email, phone, address, password) " + "VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
